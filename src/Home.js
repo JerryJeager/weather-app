@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -5,6 +6,49 @@ import WeatherDetails from "./WeatherDetails";
 
 
 const Home = () => {
+    const [geolocation, setGeolocation] = useState({})
+    const [temperatureDegree, setTemperatureDegree] = useState('')
+    const [weatherText, setWeatherText] = useState('')
+    const [countryName, setCountryName] = useState('Nigeria')
+    const currentCondition = async (id) => {
+        const key = 'svLlAQAAjGVfoE2Vnf4YErr77x7F4kO4'
+        const currentConditionBase = 'http://dataservice.accuweather.com/currentconditions/v1/'
+        const query = `${id}?apikey=${key}`
+        const response = await fetch(currentConditionBase + query)
+        const data = await response.json()
+        return data
+    }
+
+    const getWeather = async () => {
+        const key = 'svLlAQAAjGVfoE2Vnf4YErr77x7F4kO4'
+        const base = 'http://dataservice.accuweather.com/locations/v1/cities/search'
+        // const apikey = `?apikey=${key}&q=Nsukka`
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords
+                setGeolocation({ latitude, longitude })
+            })
+            const query = `?apikey=${key}&q=${geolocation.latitude},${geolocation.longitude}`
+            const response = await fetch(base + query)
+            const data = await response.json()
+            return data
+        }
+    }
+
+    useEffect(() => {
+        getWeather().then(data => {
+            console.log(data)
+            // setCountryName(data[0].Country.LocalizedName)
+            return currentCondition(data[0].Key)
+        }).then(data => {
+            setTemperatureDegree(data[0].Temperature.Metric.Value)
+            setWeatherText(data[0].WeatherText)
+            console.log(data)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [])
+
     return ( 
         <div className="home-page" style={{background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/clouds.jpg) center/cover no-repeat fixed"}}>
             <header>
@@ -12,10 +56,10 @@ const Home = () => {
                     <Link to="/Search"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></Link>
                 </div>
                 <div className="city-name">
-                    <h2>Nsukka</h2>
+                    <h2>{countryName}</h2>
                 </div>
             </header>
-            <WeatherDetails />
+            <WeatherDetails degree={temperatureDegree} weatherText={weatherText}  />
             <div className="more-weather-details">
                 <div className="sunrise-and-sunset">
                     <div className="sunrise">
@@ -61,5 +105,7 @@ const Home = () => {
         </div>
     );
 }
+
+
  
 export default Home;

@@ -2,19 +2,22 @@ import { Link } from "react-router-dom";
 
 
 
-const WeatherDetails = () => {
+const WeatherDetails = (props) => {
+    const temperatureDegree = props.degree
+    const weatherText = props.weatherText
+    console.log(props)
     return ( 
         <div className="weather-details">
             <div className="location-weather">
                 <div className="temperature">
                     <div className="value">
-                        <h1>35</h1>
+                        <h1>{temperatureDegree}</h1>
                     </div>
                     <div className="degree">
                         <p><sup>o</sup>C</p>
                     </div>
                 </div>
-                <p>Cloudy</p>
+                <p>{weatherText}</p>
                 <div className="aqi">
                     <i class="fa-solid fa-leaf"></i>
                     <p>AQI 26</p>
@@ -34,10 +37,10 @@ const WeatherDetails = () => {
                     <div className="today">
                         <div className="today-weather">
                             <i class="fa-solid fa-sun"></i>
-                            <p>Today<sup>.</sup>Clear</p>
+                            <p>Today<sup>.</sup>{weatherText}</p>
                         </div>
                         <div className="today-temperature">
-                            <p>36<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{temperatureDegree}<sup>o</sup> / 22<sup>o</sup></p>
                         </div>
                     </div>
                     <div className="tomorrow"> 
