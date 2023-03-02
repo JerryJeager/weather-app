@@ -12,12 +12,13 @@ const Home = () => {
     const [weatherText, setWeatherText] = useState('')
     const [countryName, setCountryName] = useState('Nigeria')
     const currentCondition = async (id) => {
-        const key = 'svLlAQAAjGVfoE2Vnf4YErr77x7F4kO4'
+        const key = '4mOS0CylA02zCy4G243ty3humQOw0p0i'
         const currentConditionBase = 'http://dataservice.accuweather.com/currentconditions/v1/'
         const query = `${id}?apikey=${key}`
         const response = await fetch(currentConditionBase + query)
         const data = await response.json()
         return data
+        
     }
 
     const getWeather = async () => {
@@ -32,16 +33,14 @@ const Home = () => {
             const query = `?apikey=${key}&q=${geolocation.latitude},${geolocation.longitude}`
             const response = await fetch(base + query)
             const data = await response.json()
-            return data
+            return data[0].Key
         }
     }
 
     useEffect(() => {
         getWeather().then(data => {
             console.log(data)
-            setCountryName(data[0].Country.LocalizedName)
-            console.log(data[0].Key)
-            return currentCondition(data[0].Key)
+            return currentCondition(data)
         }).then(data => {
             setTemperatureDegree(data[0].Temperature.Metric.Value)
             setWeatherText(data[0].WeatherText)
@@ -108,9 +107,7 @@ const Home = () => {
             </div>
         )
     }
-    return(
-        <NotFound/>
-    )
+    
 }
 
 
