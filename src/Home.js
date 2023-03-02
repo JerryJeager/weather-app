@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Search from "./Search";
 
 
 import WeatherDetails from "./WeatherDetails";
@@ -10,7 +9,7 @@ const Home = () => {
         <div className="home-page" style={{background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/clouds.jpg) center/cover no-repeat fixed"}}>
             <header>
                 <div className="search-btn">
-                    <Link to={ <Search/> }><i class="fa-sharp fa-solid fa-magnifying-glass"></i></Link>
+                    <Link to="/Search"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></Link>
                 </div>
                 <div className="city-name">
                     <h2>Nsukka</h2>

@@ -26,6 +26,13 @@ header{
   backdrop-filter: blur(11.7px);
   -webkit-backdrop-filter: blur(11.7px);
 }
+button{
+  border: none;
+  outline: none;
+  background: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
 .city-name{
   width: 120px;
   text-align: center;
@@ -92,7 +99,7 @@ header{
   font-size: .9rem;
 }
 .aqi p{
-  font-size: .8rem;
+  font-size: .7rem;
   margin-left: .5rem;
 }
 .forecast-details{
@@ -191,19 +198,37 @@ header{
   align-self: flex-end;
 }
 /* Day forecast */
-.day-forecast{
+.day-forecast, .search{
   height: 100vh;
   background-color: #000;
   color: #fff;
   font-family: 'Shantell Sans', cursive;
 }
-.day-forecast .header{
+.day-forecast .header, .search .header{
   padding: 2rem 30px;
 }
-.day-forecast a{
-  color: #fff;
-  font-size: 1.5rem;
-}
-.day-forecast h2{
+.day-forecast h2, .search h2{
   margin-top: 1.5rem;
+}
+form{
+  width: 100%;
+  padding: 0 30px;
+  position: relative;
+}
+input{
+  width: 100%;
+  height: 43px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  caret-color: rgb(0, 54, 202);
+  background-color: rgba(31, 33, 34, 0.8);
+  padding: .7rem 40px;
+  font-family: 'Shantell Sans', cursive;
+  color: #fff;
+}
+form button{
+  position: absolute;
+  left: 11%;
+  color:rgba(255, 255, 255, .6);
 }
