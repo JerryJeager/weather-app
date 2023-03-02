@@ -33,14 +33,16 @@ const Home = () => {
             const query = `?apikey=${key}&q=${geolocation.latitude},${geolocation.longitude}`
             const response = await fetch(base + query)
             const data = await response.json()
-            return data[0].Key
+            return data
         }
     }
 
     useEffect(() => {
+        console.log('rendered')
         getWeather().then(data => {
-            console.log(data)
-            return currentCondition(data)
+            const newKey = data
+            console.log(newKey)
+            return currentCondition(newKey[0].Key)
         }).then(data => {
             setTemperatureDegree(data[0].Temperature.Metric.Value)
             setWeatherText(data[0].WeatherText)
@@ -49,8 +51,7 @@ const Home = () => {
             console.log(error)
         })
     }, [])
-
-    if(weatherText !== ''){
+    
         return (
             <div className="home-page" style={{ background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/clouds.jpg) center/cover no-repeat fixed" }}>
                 <header>
@@ -106,7 +107,6 @@ const Home = () => {
                 </div>
             </div>
         )
-    }
     
 }
 
