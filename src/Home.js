@@ -35,7 +35,6 @@ const Home = () => {
     const [nextTomorrowTemp, setNextTomorrowTemp] = useState('')
     const [nextTomorrowWeatherText, setNextTomorrowWeatherText] = useState('')
     const [nextTomorrowIcon, setNextTomorrowIcon] = useState('')
-    const [nextTomorrowDate, setNextTomorrowDate]  = useState('')
     
 
     const [day, setDay] = useState('')
@@ -109,8 +108,9 @@ const Home = () => {
                         setNextTomorrowIcon(data.forecast.forecastday[2].day.condition.icon)
                         const dayOfWeek = new Date(`${data.forecast.forecastday[2].date}`)
                         const dayValue = dayOfWeek.getDay()
+                        console.log(dayValue)
                         getDayName(dayValue)
-                        setNextTomorrowDate(day)
+                        console.log(day)
 
 
                         console.log(data);
@@ -143,7 +143,7 @@ const Home = () => {
                tomorrowWeatherText={tomorrowWeatherText} 
                todayIcon={todayIcon} 
                tomorrowIcon={tomorrowIcon} 
-               nextTomorrowDate={nextTomorrowDate} 
+               nextTomorrowDate={day} 
                nextTomorrowIcon={nextTomorrowIcon} 
                nextTomorrowTemp={nextTomorrowTemp} 
                nextTomorrowWeatherText={nextTomorrowWeatherText}
@@ -184,7 +184,7 @@ const Home = () => {
                     <h5>Air Quality Index</h5>
                     <div className="aqi-details">
                         <i class="fa-solid fa-leaf"></i>
-                        <p>31</p>
+                        <p>26</p>
                     </div>
                 </div>
                 <div className="full-aqi-details">
