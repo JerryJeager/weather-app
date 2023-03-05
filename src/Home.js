@@ -108,8 +108,10 @@ const Home = () => {
                         setNextTomorrowWeatherText(data.forecast.forecastday[2].day.condition.text)
                         setNextTomorrowIcon(data.forecast.forecastday[2].day.condition.icon)
                         const dayOfWeek = new Date(`${data.forecast.forecastday[2].date}`)
-                        getDayName(dayOfWeek.getDay)
+                        const dayValue = dayOfWeek.getDay()
+                        getDayName(dayValue)
                         setNextTomorrowDate(day)
+
 
                         console.log(data);
 
