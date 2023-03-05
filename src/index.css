@@ -49,7 +49,7 @@ button{
 }
 .weather-details{
   width: auto;
-  margin:6rem auto;
+  margin:6rem auto 0 auto;
   padding: 10px 40px;
   color: #ddd;
 }
@@ -106,7 +106,7 @@ button{
   color: #ddd;
   font-family: 'Shantell Sans', cursive;
   margin-top: 3rem;
-  font-size: .8rem;
+  font-size: .7rem;
   /* padding: 20px 30px; */
 }
 .forecast-details img{
@@ -235,4 +235,39 @@ form button{
   position: absolute;
   left: 11%;
   color:rgba(255, 255, 255, .6);
+}
+/* hourly forecast */
+.hourly-forecast{
+  /* height: 100px; */
+  overflow-x: scroll;
+  padding: .9rem 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Shantell Sans', cursive;
+}
+.hours{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 .4rem;
+  width: 90px;
+}
+.hour{
+  color: rgba(255, 208, 208, 0.6);
+  font-size: .6rem;
+  padding-bottom: .6rem;
+}
+
+.hours h5{
+  color: #fff;
+  font-size: 1.4rem;
+}
+.hours img{
+  width: 45px;
+}
+.hours img + p{
+  color: #ddd;
+  font-size: .5rem;
+  text-align: center;
+  padding-top: .6rem;
 }

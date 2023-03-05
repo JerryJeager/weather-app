@@ -68,10 +68,6 @@ const WeatherDetails = (props) => {
                         5-day forecast
                     </div>
                 </Link>
-                {/* hourly forecast */}
-                <div className="hourly-forecast">
-
-                </div>
             </div>
         </div>
     );

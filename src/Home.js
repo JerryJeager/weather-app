@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 
 import WeatherDetails from "./WeatherDetails";
+import HourlyForecast from "./HourlyForecast";
 
 
 const Home = () => {
@@ -35,9 +36,10 @@ const Home = () => {
     const [nextTomorrowTemp, setNextTomorrowTemp] = useState('')
     const [nextTomorrowWeatherText, setNextTomorrowWeatherText] = useState('')
     const [nextTomorrowIcon, setNextTomorrowIcon] = useState('')
-    
-
     const [day, setDay] = useState('')
+
+    // Hourly forecast
+    const [hours, setHours] = useState('')
 
     const getDayName = (d) => {
         switch (d) {
@@ -112,6 +114,9 @@ const Home = () => {
                         getDayName(dayValue)
                         console.log(day)
 
+                        // hourly forecast
+                        setHours(data.forecast.forecastday[0].hour)
+
 
                         console.log(data);
 
@@ -148,6 +153,8 @@ const Home = () => {
                nextTomorrowTemp={nextTomorrowTemp} 
                nextTomorrowWeatherText={nextTomorrowWeatherText}
             />
+
+            <HourlyForecast hours={hours} />
 
             <div className="more-weather-details">
                 <div className="sunrise-and-sunset">
