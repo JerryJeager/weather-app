@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 
 
 const WeatherDetails = (props) => {
-    const temperatureDegree = props.degree
-    const weatherText = props.weatherText
-    console.log(props)
+
+    let temperature = props.temperature
+    let weatherText = props.weatherText
+    
     return ( 
         <div className="weather-details">
             <div className="location-weather">
                 <div className="temperature">
                     <div className="value">
-                        <h1>{temperatureDegree}</h1>
+                        <h1>{temperature}</h1>
                     </div>
                     <div className="degree">
                         <p><sup>o</sup>C</p>
@@ -40,7 +41,7 @@ const WeatherDetails = (props) => {
                             <p>Today<sup>.</sup>{weatherText}</p>
                         </div>
                         <div className="today-temperature">
-                            <p>{temperatureDegree}<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{temperature}<sup>o</sup> / 22<sup>o</sup></p>
                         </div>
                     </div>
                     <div className="tomorrow"> 
