@@ -8,7 +8,7 @@ import WeatherDetails from "./WeatherDetails";
 const Home = () => {
 
     const key = "d793d287c872495ab2530755230503"
-    const base = "http://api.weatherapi.com/v1/current.json"
+    const base = "https://api.weatherapi.com/v1/forecast.json"
     let query = ''
     let request = ''
     
@@ -21,6 +21,51 @@ const Home = () => {
     const [windSpeed, setWindSpeed] = useState('')
     const [realFeal, setRealFeal] = useState('')
     const [uvIndex, setUvIndex] = useState('')
+    const [sunrise, setSunrise] = useState('')
+    const [sunset, setSunset] = useState('')
+    const [rainChance, setRainChance] = useState('')
+    const [todayIcon, setTodayIcon] = useState('')
+
+    // tomorrow
+    const [tomorrowTemp, setTomorrowTemp] = useState('')
+    const [tomorrowWeatherText, setTomorrowWeatherText] = useState('')
+    const [tomorrowIcon, setTomorrowIcon] = useState('')
+
+    // next tomorrow
+    const [nextTomorrowTemp, setNextTomorrowTemp] = useState('')
+    const [nextTomorrowWeatherText, setNextTomorrowWeatherText] = useState('')
+    const [nextTomorrowIcon, setNextTomorrowIcon] = useState('')
+    const [nextTomorrowDate, setNextTomorrowDate]  = useState('')
+    
+
+    const [day, setDay] = useState('')
+
+    const getDayName = (d) => {
+        switch (d) {
+            case 0:
+                setDay('Sunday')
+                break;
+            case 1:
+                setDay('Monday')
+                break;
+            case 2:
+                setDay('Tuesday')
+                break;
+            case 3:
+                setDay('Wednesday')
+                break;
+            case 4:
+                setDay('Thursday')
+                break;
+            case 5:
+                setDay('Friday')
+                break;
+            case 6:
+                setDay('Saturday')
+                break;
+        }
+    }
+    
 
     const getGeoLocation = () => {
         // if(navigator.geolocation){
@@ -28,11 +73,9 @@ const Home = () => {
                 const latitude = position.coords.latitude
                 const longitude = position.coords.longitude
                 setGeoLocation({ latitude, longitude })
-                console.log(geoLocation)
-                console.log(key)
-                query = `?key=${key}&q=${latitude},${longitude}`
+                query = `?key=${key}&q=${latitude},${longitude}&days=5`
+                
                 request = base + query
-                console.log(request)
 
                 fetch(request)
                     .then(res => {
@@ -50,7 +93,26 @@ const Home = () => {
                         setWindSpeed(data.current.wind_kph)
                         setUvIndex(data.current.uv)
                         setRealFeal(data.current.feelslike_c)
+                        setSunrise(data.forecast.forecastday[0].astro.sunrise)
+                        setSunset(data.forecast.forecastday[0].astro.sunset)
+                        setRainChance(data.forecast.forecastday[0].day.daily_chance_of_rain)
+                        setTodayIcon(data.current.condition.icon)
+
+                        // tomorrow
+                        setTomorrowTemp(data.forecast.forecastday[1].day.avgtemp_c)
+                        setTomorrowWeatherText(data.forecast.forecastday[1].day.condition.text)
+                        setTomorrowIcon(data.forecast.forecastday[1].day.condition.icon)
+
+                        // nextTomorrow
+                        setNextTomorrowTemp(data.forecast.forecastday[2].day.avgtemp_c)
+                        setNextTomorrowWeatherText(data.forecast.forecastday[2].day.condition.text)
+                        setNextTomorrowIcon(data.forecast.forecastday[2].day.condition.icon)
+                        const dayOfWeek = new Date(`${data.forecast.forecastday[2].date}`)
+                        getDayName(dayOfWeek.getDay)
+                        setNextTomorrowDate(day)
+
                         console.log(data);
+
                     })
                     .catch(err => {
                         console.log(err);
@@ -72,16 +134,28 @@ const Home = () => {
                     <h2>{location}</h2>
                 </div>
             </header>
-            <WeatherDetails temperature={temperature} weatherText={weatherText} />
+            <WeatherDetails 
+               temperature={temperature} 
+               weatherText={weatherText}  
+               tomorrowTemp={tomorrowTemp} 
+               tomorrowWeatherText={tomorrowWeatherText} 
+               todayIcon={todayIcon} 
+               tomorrowIcon={tomorrowIcon} 
+               nextTomorrowDate={nextTomorrowDate} 
+               nextTomorrowIcon={nextTomorrowIcon} 
+               nextTomorrowTemp={nextTomorrowTemp} 
+               nextTomorrowWeatherText={nextTomorrowWeatherText}
+            />
+
             <div className="more-weather-details">
                 <div className="sunrise-and-sunset">
                     <div className="sunrise">
                         <i class="fa-solid fa-sun"></i>
-                        <p>Sunrise 06:43</p>
+                        <p>Sunrise {sunrise}</p>
                     </div>
                     <div className="sunset">
                         <i class="fa-solid fa-moon"></i>
-                        <p>Sunset 18:43</p>
+                        <p>Sunset {sunset}</p>
                     </div>
                 </div>
                 <div className="weather-info">
@@ -89,7 +163,7 @@ const Home = () => {
                         <h5>Real feel</h5>
                         <p>{realFeal}<sup>o</sup>C</p>
                         <h5>Chance of rain</h5>
-                        <p>25%</p>
+                        <p>{rainChance}%</p>
                         <h5>Wind speed</h5>
                         <p>{windSpeed}Km/h</p>
                     </div>

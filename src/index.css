@@ -106,8 +106,12 @@ button{
   color: #ddd;
   font-family: 'Shantell Sans', cursive;
   margin-top: 3rem;
-  font-size: .9rem;
+  font-size: .8rem;
   /* padding: 20px 30px; */
+}
+.forecast-details img{
+  width: 25px;
+  height: auto;
 }
 .fa-moon, .fa-sun{
   color: yellow;
@@ -115,17 +119,17 @@ button{
 .fa-cloud-bolt{
   color: #ddd;
 }
-.yesterday, .today, .tomorrow{
+.next-tomorrow, .today, .tomorrow{
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2rem;
 }
-.yesterday-weather, .today-weather, .tomorrow-weather{
+.next-tomorrow-weather, .today-weather, .tomorrow-weather{
   display: flex;
   align-items: center;
 }
-.yesterday-weather p, .today-weather p, .tomorrow-weather p{
+.next-tomorrow-weather p, .today-weather p, .tomorrow-weather p{
   margin-left: .9rem;
 }
 .five-day-forecast{

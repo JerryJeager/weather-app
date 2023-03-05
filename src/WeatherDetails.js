@@ -6,6 +6,14 @@ const WeatherDetails = (props) => {
 
     let temperature = props.temperature
     let weatherText = props.weatherText
+    let tomorrowTemp = props.tomorrowTemp
+    let tomorrowWeatherText = props.tomorrowWeatherText
+    let todayIcon = props.todayIcon
+    let tomorrowIcon = props.tomorrowIcon
+    let nextTomorrowTemp = props.nextTomorrowTemp
+    let nextTomorrowWeatherText = props.nextTomorrowWeatherText
+    let nextTomorrowIcon = props.nextTomorrowIcon
+    let nextTomorrowDate = props.nextTomorrowDate
     
     return ( 
         <div className="weather-details">
@@ -26,18 +34,9 @@ const WeatherDetails = (props) => {
             </div>
             <div className="forecast-details">
                 <div className="three-day-forecast">
-                    <div className="yesterday">
-                        <div className="yesterday-weather">
-                            <i class="fa-solid fa-moon"></i>
-                            <p>Yesterday<sup>.</sup>Clear</p>
-                        </div>
-                        <div className="yesterday-temperature">
-                            <p>36<sup>o</sup> / 22<sup>o</sup></p>
-                        </div>
-                    </div>
                     <div className="today">
                         <div className="today-weather">
-                            <i class="fa-solid fa-sun"></i>
+                            <img src={todayIcon} alt="" />
                             <p>Today<sup>.</sup>{weatherText}</p>
                         </div>
                         <div className="today-temperature">
@@ -46,11 +45,20 @@ const WeatherDetails = (props) => {
                     </div>
                     <div className="tomorrow"> 
                         <div className="tomorrow-weather">
-                            <i class="fa-solid fa-cloud-bolt"></i>
-                            <p>Tomorrow<sup>.</sup>Thunderstorm</p>
+                            <img src={tomorrowIcon} alt="" />
+                            <p>Tomorrow<sup>.</sup>{tomorrowWeatherText}</p>
                         </div>
                         <div className="tomorrow-temperature">
-                            <p>36<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{tomorrowTemp}<sup>o</sup> / 22<sup>o</sup></p>
+                        </div>
+                    </div>
+                    <div className="next-tomorrow">
+                        <div className="next-tomorrow-weather">
+                            <img src={nextTomorrowIcon} alt="" />
+                            <p>{nextTomorrowDate}<sup>.</sup>{nextTomorrowWeatherText}</p>
+                        </div>
+                        <div className="next-tomorrow-temperature">
+                            <p>{nextTomorrowTemp}<sup>o</sup> / 22<sup>o</sup></p>
                         </div>
                     </div>
                 </div>
