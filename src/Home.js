@@ -41,6 +41,9 @@ const Home = () => {
     // Hourly forecast
     const [hours, setHours] = useState('')
 
+    // background style
+    const [bg, setBg] = useState({})
+
     const getDayName = (d) => {
         switch (d) {
             case 0:
@@ -110,13 +113,15 @@ const Home = () => {
                         setNextTomorrowIcon(data.forecast.forecastday[2].day.condition.icon)
                         const dayOfWeek = new Date(`${data.forecast.forecastday[2].date}`)
                         const dayValue = dayOfWeek.getDay()
-                        console.log(dayValue)
                         getDayName(dayValue)
-                        console.log(day)
 
                         // hourly forecast
                         setHours(data.forecast.forecastday[0].hour)
+                        
+                        // background style
+                        data.current.is_day === 0 ? setBg({ background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/stars.jpg) center/cover no-repeat fixed" }) : setBg({ background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/clouds.jpg) center/cover no-repeat fixed"})
 
+                        
 
                         console.log(data);
 
@@ -132,7 +137,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="home-page" style={{ background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/img/clouds.jpg) center/cover no-repeat fixed" }}>
+        <div className="home-page" style={bg}>
             <header>
                 <div className="search-btn">
                     <Link to="/Search"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></Link>
