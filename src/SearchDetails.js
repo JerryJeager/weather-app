@@ -9,7 +9,7 @@ const SearchDetails = ({searchTemp, name, region, country, icon, weatherText}) =
             <h2>{region}, {country}</h2>
         </div>
         <div className="search-weather-details">
-            <p>{searchTemp}<sup>o</sup>C</p>
+            <p>{searchTemp}<sup>&deg;</sup>C</p>
             <img src={icon} alt="icon" />
             <p>{weatherText}</p>
         </div>

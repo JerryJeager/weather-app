@@ -155,6 +155,8 @@ const Home = () => {
 
                     <HourlyForecast hours={hours} />
 
+                    <div className="more-weather-details-container">
+
                     <div className="more-weather-details">
                         <div className="sunrise-and-sunset">
                             <div className="sunrise">
@@ -169,7 +171,7 @@ const Home = () => {
                         <div className="weather-info">
                             <div className="info1">
                                 <h5>Real feel</h5>
-                                <p>{realFeal}<sup>o</sup>C</p>
+                                <p>{realFeal}<sup>&deg;</sup>C</p>
                                 <h5>Chance of rain</h5>
                                 <p>{rainChance}%</p>
                                 <h5>Wind speed</h5>
@@ -196,6 +198,7 @@ const Home = () => {
                         <div className="full-aqi-details">
                             <a href="https://www.acuweather.com">Full air quality forecast &gt; </a>
                         </div>
+                    </div>
                     </div>
                 </div>
             }

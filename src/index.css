@@ -161,6 +161,7 @@ button{
   border: 1px solid rgba(167, 160, 160, 0.3);  
   padding: 2rem;
   font-family: 'Shantell Sans', cursive;
+  transition: .3s;
 }
 .sunrise-and-sunset{
   display: flex;
@@ -205,6 +206,7 @@ button{
 /* Day forecast */
 .day-forecast, .search{
   height: 100vh;
+  /* height: 100%; */
   background-color: #000;
   color: #fff;
   font-family: 'Shantell Sans', cursive;
@@ -218,10 +220,10 @@ button{
 form{
   width: 100%;
   padding: 0 30px;
-  position: relative;
+  display: flex;
 }
 input{
-  width: 100%;
+  width: 90%;
   height: 43px;
   border-radius: 10px;
   border: none;
@@ -233,8 +235,9 @@ input{
   color: #fff;
 }
 form button{
-  position: absolute;
-  left: 11%;
+  /* position: absolute;
+  left: 11%; */
+  margin-left: .9rem;
   color:rgba(255, 255, 255, .6);
 }
 /* hourly forecast */
@@ -368,4 +371,56 @@ form button{
 }
 .search-details img{
   width: 35px;
+}
+@media screen and (min-width: 760px){
+  *{
+    font-size: 18px;
+  }
+  .forecast-details{
+    width: 500px;
+    margin: auto;
+  }
+  .more-weather-details-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .more-weather-details{
+    width: 500px;
+    margin: 2rem auto;
+  }
+  .air-quality-index-detail{
+    width: 40%;
+    margin: auto;
+  }
+  .aqi{
+    width: 110px;
+  }
+  .forecast{
+    padding: .9rem 40px;
+  }
+  .forecast img{
+    width: 45px;
+  }
+  form{
+    width: 40%;
+    margin: auto;
+  }
+  input{
+    width: 80%;
+  }
+  .search-details{
+    width: 60%;
+  }
+  button{
+    cursor: pointer;
+  }
+  .more-weather-details:hover,
+  .air-quality-index-detail:hover,
+  .five-day-forecast:hover{
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.7px);
+    -webkit-backdrop-filter: blur(11.7px);
+    transition: .4s;
+  }
 }

@@ -11,7 +11,7 @@ const router = createBrowserRouter(
       <Route index element={<Home/>} />
       <Route path='DayForeCast' element={<DayForecast />} />
       <Route path='Search' element={<Search />} />
-      <Route path='NotFound' errorElement={ <NotFound />} />
+      <Route path='*' errorElement={ <NotFound />} />
     </Route>
   )
 )

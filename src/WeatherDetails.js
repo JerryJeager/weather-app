@@ -40,7 +40,7 @@ const WeatherDetails = (props) => {
                             <p>Today<sup>.</sup>{weatherText}</p>
                         </div>
                         <div className="today-temperature">
-                            <p>{temperature}<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{temperature}<sup>&deg;</sup> / 22<sup>&deg;</sup></p>
                         </div>
                     </div>
                     <div className="tomorrow"> 
@@ -49,7 +49,7 @@ const WeatherDetails = (props) => {
                             <p>Tomorrow<sup>.</sup>{tomorrowWeatherText}</p>
                         </div>
                         <div className="tomorrow-temperature">
-                            <p>{tomorrowTemp}<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{tomorrowTemp}<sup>&deg;</sup> / 22<sup>&deg;</sup></p>
                         </div>
                     </div>
                     <div className="next-tomorrow">
@@ -58,7 +58,7 @@ const WeatherDetails = (props) => {
                             <p>{nextTomorrowDate}<sup>.</sup>{nextTomorrowWeatherText}</p>
                         </div>
                         <div className="next-tomorrow-temperature">
-                            <p>{nextTomorrowTemp}<sup>o</sup> / 22<sup>o</sup></p>
+                            <p>{nextTomorrowTemp}<sup>&deg;</sup> / 22<sup>&deg;</sup></p>
                         </div>
                     </div>
                 </div>

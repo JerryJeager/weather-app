@@ -88,7 +88,7 @@ const Search = () => {
                 setIsFormSubmitted(true)
                 console.log('clicked')
             }}>
-                <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+               
                 <input type="text" list='items' placeholder="Enter location"
                     value={inputValue}
                     onChange={(e) => {
@@ -97,6 +97,7 @@ const Search = () => {
 
                     }}
                 />
+                 <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                 
                 <datalist id="items">
                     {suggestionList && suggestionList.map(suggest => {
