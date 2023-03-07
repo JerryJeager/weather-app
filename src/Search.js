@@ -17,6 +17,8 @@ const Search = () => {
     const [weatherText, setWeatherText] = useState('')
     const [weatherData, setWeatherData] = useState('')
 
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+
 
     const key = "d793d287c872495ab2530755230503"
     const base = `https://api.weatherapi.com/v1/search.json`
@@ -45,29 +47,33 @@ const Search = () => {
     }
 
     const getWeather = () => {
-        const base = `https://api.weatherapi.com/v1/current.json`
-        query = `?key=${key}&q=${inputValue}`
-        request = base + query
-        fetch(request)
-            .then(res => {
-                if (!res.ok) {
-                    throw Error("Could not fetch the data for that resource");
-                }
-                return res.json();
-            })
-            .then(data => {
-                setWeatherData(data)
-                setSearchTemp(data.current.temp_c)
-                setName(data.location.name)
-                setRegion(data.location.region)
-                setCountry(data.location.country)
-                setIcon(data.current.condition.icon)
-                setWeatherText(data.current.condition.text)
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        setTimeout(() => {
+            const base = `https://api.weatherapi.com/v1/current.json`
+            query = `?key=${key}&q=${inputValue}`
+            request = base + query
+            fetch(request)
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error("Could not fetch the data for that resource");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setWeatherData(data)
+                    setSearchTemp(data.current.temp_c)
+                    setName(data.location.name)
+                    setRegion(data.location.region)
+                    setCountry(data.location.country)
+                    setIcon(data.current.condition.icon)
+                    setWeatherText(data.current.condition.text)
+                    console.log(data)
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+        }, 2000)
+        
     }
 
 
@@ -79,6 +85,7 @@ const Search = () => {
             </div>
             <Form onSubmit={() => {
                 getWeather()
+                setIsFormSubmitted(true)
                 console.log('clicked')
             }}>
                 <input type="text" list='items' placeholder="Enter location"
@@ -96,7 +103,7 @@ const Search = () => {
                     })}
                 </datalist>
             </Form>
-            {weatherData && <SearchDetails
+            {isFormSubmitted && weatherData && <SearchDetails
                searchTemp={searchTemp}
                name={name}
                region={region}
@@ -104,6 +111,12 @@ const Search = () => {
                icon={icon}
                weatherText={weatherText}
              /> }
+             {isFormSubmitted && !weatherData && <div className="bouncer">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>}
         </div>
     );
 }
