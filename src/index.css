@@ -258,9 +258,9 @@ form button{
   padding-bottom: .6rem;
 }
 
-.hours h5{
-  color: #fff;
-  font-size: 1.4rem;
+.hour-temp{
+  color: #ddd;
+  font-size: .8rem;
 }
 .hours img{
   width: 45px;
@@ -270,4 +270,31 @@ form button{
   font-size: .5rem;
   text-align: center;
   padding-top: .6rem;
+}
+/* 5 day forecast */
+.forecast-days{
+  padding: 2rem 20px;
+  margin-bottom: 15px;
+}
+.day-forecast .header{
+  border-bottom: 1px solid rgba(167, 160, 160, 0.31);
+}
+.day p{
+  font-size: .9rem;
+}
+.forecast{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .5rem;
+  padding: .4rem 20px;
+  border-bottom: 1px solid rgba(167, 160, 160, 0.31);
+}
+.forecast img{
+  width: 20px;
+}
+.forecast-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
