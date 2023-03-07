@@ -11,7 +11,7 @@ const useFetch = (forecastDays, baseName = 'forecast.json') => {
     const [fiveDayForecast, setFiveDayForecast] = useState(null)
 
     useEffect(() => {
-        setTimeout(() => {
+        // setTimeout(() => {
             navigator.geolocation.getCurrentPosition(position => {
                 const latitude = position.coords.latitude
                 const longitude = position.coords.longitude
@@ -38,7 +38,7 @@ const useFetch = (forecastDays, baseName = 'forecast.json') => {
                 return { weatherData, forecastDays }
             })
 
-        }, 2000)
+        // }, 2000)
        
     }, [])
 

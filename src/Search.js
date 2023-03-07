@@ -47,7 +47,7 @@ const Search = () => {
     }
 
     const getWeather = () => {
-        setTimeout(() => {
+        // setTimeout(() => {
             const base = `https://api.weatherapi.com/v1/current.json`
             query = `?key=${key}&q=${inputValue}`
             request = base + query
@@ -72,7 +72,7 @@ const Search = () => {
                     console.log(err);
                 });
 
-        }, 2000)
+        // }, 2000)
         
     }
 
@@ -88,6 +88,7 @@ const Search = () => {
                 setIsFormSubmitted(true)
                 console.log('clicked')
             }}>
+                <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                 <input type="text" list='items' placeholder="Enter location"
                     value={inputValue}
                     onChange={(e) => {
@@ -96,7 +97,7 @@ const Search = () => {
 
                     }}
                 />
-                <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                
                 <datalist id="items">
                     {suggestionList && suggestionList.map(suggest => {
                         return (<option key={suggest.id} >{suggest.name}</option>)
