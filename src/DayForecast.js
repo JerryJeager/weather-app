@@ -31,7 +31,12 @@ const DayForecast = () => {
                 </div>)
             })}
 
-            {!fiveDayForecast && <p>Loading...</p>}
+            {!fiveDayForecast && <div className="bouncer">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>}
             
         </div>
     );

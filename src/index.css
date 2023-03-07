@@ -13,7 +13,7 @@ cursive; */
   padding-bottom: 2rem;
 }
 header{
-  height: 60px;
+  /* height: 60px; */
   padding: .7rem 30px;
   width: 100%;
   display: flex;
@@ -34,10 +34,11 @@ button{
   font-size: 1.5rem;
 }
 .city-name{
-  width: 120px;
+  /* width: 120px; */
   text-align: center;
-  font-size: 13px;
+  font-size: 11px;
   color: #ddd;
+  padding-left: 5px;
   margin: auto;
   font-family: 'Poppins', sans-serif;
   font-family: 'Shantell Sans', cursive;
@@ -297,4 +298,41 @@ form button{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+/* bouncer */
+.bouncer{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 75px;
+  margin: 10rem auto;
+  height: 75px;
+}
+.bouncer div{
+  width: 10px;
+  height: 10px;
+  background: #0077ff;
+  border-radius: 50%;
+  animation: bouncer 0.5s cubic-bezier(.19, .57, .3, .98) infinite alternate;
+}
+.bouncer div:nth-child(2){
+  animation-delay: 0.1s;
+  opacity: 0.8;
+}
+.bouncer div:nth-child(3){
+  animation-delay: 0.2s;
+  opacity: 0.6;
+}
+.bouncer div:nth-child(4){
+  animation-delay: 0.3s;
+  opacity: 0.4;
+}
+
+@keyframes bouncer {
+  from{
+    transform: translateY(0);
+  }
+  to{
+    transform: translateY(-100px);
+  }
 }
