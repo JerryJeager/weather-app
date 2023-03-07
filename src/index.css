@@ -336,3 +336,36 @@ form button{
     transform: translateY(-100px);
   }
 }
+
+/* Search Details */
+.search-details{
+  width: 85%;
+  margin: 3rem auto;
+  /* height: 200px; */
+  border-radius: 10px;
+  padding: .7em;
+  background-color: rgba(31, 33, 34, 0.8);
+  display: flex;
+  justify-content: space-between;
+}
+.search-details .location p{
+  font-size: .5rem;
+  color: #ddd;
+}
+.search-details .location h2{
+  font-size: .95rem;
+}
+.search-details .search-weather-details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-self: flex-end;
+  /* justify-content: flex-end; */
+}
+.search-details .search-weather-details p{
+  font-size: .7rem;
+  text-align: right;
+}
+.search-details img{
+  width: 35px;
+}
